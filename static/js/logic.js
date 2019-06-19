@@ -12,9 +12,10 @@ L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
   accessToken: API_KEY
 }).addTo(map);
 
-// Store API query variables
+// Adding URL 
 var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
+// Defining the colors for the markers of the map (circles)
 var colors = ['#ADFF2F', '#F0E68C', '#FFD700', '#FFA500', '#D2691E', '#FF0000']
 
 // create a function to get fill colors based on size
@@ -39,7 +40,7 @@ function fillColor(magnitude) {
   }
 }
 
-// Grab the data with d3
+// Grab the earthquake data with d3
 d3.json(url, function(response) {
 
   // Create a variable to store features -> this is where the data we need is located
@@ -90,5 +91,5 @@ legend.onAdd = function() {
   return div;
 };
 
-// Add the info legend to the map
+// Add the legend to the map
 legend.addTo(map);
